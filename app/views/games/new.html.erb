@@ -1,20 +1,16 @@
 <div class="container">
 
-  <h1>New game & party</h1>
-
-    <div class="d-fex grid-letter">
+    <div class="grid-letter mt-5">
       <% @letters.each do |letter| %>
-          <p><%= letter %></p>
+        <div class="letter d-flex">
+          <p><%= letter.upcase %></p>
+        </div>
       <% end %>
     </div>
 
-
-
-<%# <--Formulaire nesté pour créer à la fois un game et une partie--> %>
-
 <%= simple_form_for(@game) do |game_form| %>
 
-  <%= game_form.simple_fields_for :parties do |f| %>
+  <%= game_form.simple_fields_for @party do |f| %>
     <%= f.input :word,
     label: "Rentrer votre mot"%>
   <% end %>
