@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :games, only: [:new, :create] do
-    resources :parties, only: [:show]
+    resources :parties, only: [:show, :create]
   end
 
 end

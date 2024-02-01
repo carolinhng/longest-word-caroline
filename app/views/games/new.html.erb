@@ -1,23 +1,16 @@
 <div class="container">
 
-    <div class="grid-letter mt-5">
-      <% @letters.each do |letter| %>
+    <div class="grid-letter mt-5 mb-5">
+      <% @letters.shuffle.each do |letter| %>
         <div class="letter d-flex">
           <p><%= letter.upcase %></p>
         </div>
       <% end %>
     </div>
 
-<%= simple_form_for(@game) do |game_form| %>
-
-  <%= game_form.simple_fields_for @party do |f| %>
-    <%= f.input :word,
-    label: "Rentrer votre mot"%>
+  <%= simple_form_for @game do |f| %>
+    <%= f.submit label: "Jouer" %>
   <% end %>
-
-  <%= game_form.button :submit, 'Jouer' %>
-
-<% end %>
 
 
 
