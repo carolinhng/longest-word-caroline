@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  skip_before_action :authenticate_user!
+  # skip_before_action :authenticate_user!
 
   def new
     @game = Game.new
@@ -11,8 +11,15 @@ class GamesController < ApplicationController
   end
 
   def create
+    @user = current_user
+    @game = Game.new(user_id: @user.id)
+    @party = Party.new(params[:word])
     raise
 
+  end
+
+  def game_params
+    params.require(:game).permit(parties_attributes: [:word])
   end
 
 end

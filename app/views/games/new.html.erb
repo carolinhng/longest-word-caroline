@@ -8,10 +8,14 @@
       <% end %>
     </div>
 
-  <%= simple_form_for @game do |f| %>
-    <%= f.submit label: "Jouer" %>
-  <% end %>
 
 
+<%= simple_form_for(@game) do |game_form| %>
+    <%= game_form.simple_fields_for @party do |f| %>
 
-</div>
+      <%= f.input :word,
+        label: "Rentrez votre mot"
+        %>
+    <% end %>
+  <%= game_form.button :submit, 'Jouer', class: "btn btn-primary" %>
+<% end %>
